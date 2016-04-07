@@ -78,7 +78,6 @@ public class ObjectClass {
 
         this.xPosition = randNumX;
         this.yPosition = randNumY;
-
         this.nameChar1 = this.name.charAt(0);
 
         battleBoard[this.yPosition][this.xPosition] = this.nameChar1;
@@ -92,22 +91,18 @@ public class ObjectClass {
     }
 
     public int getAttack () {
-
         return( attack );
     }
 
     public int getMovement () {
-
         return( movement );
     }
 
     public int getHealth () {
-
         return( health );
     }
 
     public boolean getAlive(){
-
         return(alive);
     }
 
