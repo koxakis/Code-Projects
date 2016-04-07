@@ -1,4 +1,6 @@
 //Used with either MiniGame.java or ObjectClassMain.java
+package TestingGame;
+
 import java.util.Arrays;
 
 public class ObjectClass {
