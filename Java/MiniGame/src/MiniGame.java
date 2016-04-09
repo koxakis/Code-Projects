@@ -2,7 +2,7 @@ package TestingGame;
 
 import java.io.*;
 import java.util.Arrays;
-//import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 
 public class MiniGame {
 
@@ -27,7 +27,7 @@ public class MiniGame {
 
         for (ObjectClass m : Monsters ){
             if(m.getAlive()){
-                int arrayItemIndex = Str.indexOf(Monsters, m);
+                int arrayItemIndex = ArrayUtils.indexOf(Monsters, m);
                 m.moveMonster(Monsters, arrayItemIndex);
 
             }
