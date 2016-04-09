@@ -1,7 +1,7 @@
-//Used with either MiniGame.java or ObjectClassMain.java
 package TestingGame;
 
 import java.util.Arrays;
+//Used with either MiniGame.java or ObjectClassMain.java
 
 public class ObjectClass {
 
