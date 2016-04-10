@@ -1,4 +1,4 @@
-package TestingGame;
+package build.TestingGame;
 
 import java.io.*;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package TestingGame;
+package build.TestingGame;
 
 import java.util.Arrays;
 //Used with either MiniGame.java or ObjectClassMain.java
