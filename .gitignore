@@ -4,6 +4,13 @@
 *.obj
 *.elf
 
+*.pbm
+*.pxm
+*.tsc
+*.pxa
+*.pxe
+*.tbl
+
 # Precompiled Headers
 *.gch
 *.pch
