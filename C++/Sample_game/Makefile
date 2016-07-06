@@ -13,11 +13,11 @@ all : $(OBJS)
 
 build/debug/graphics.o : source/src/graphics.cpp source/headers/graphics.h
 	$(CC) $(CFLAGS) source/src/graphics.cpp -o build/debug/graphics.o
-	#g++ -c -Wall source/src/graphics.cpp -o build/debug/graphics.o
+#g++ -c -Wall source/src/graphics.cpp -o build/debug/graphics.o
 
 build/debug/main.o : source/src/main.cpp
 	$(CC) $(CFLAGS) source/src/main.cpp -o build/debug/main.o
-	#g++ -c -Wall source/src/main.cpp -o build/debug/main.o
+#g++ -c -Wall source/src/main.cpp -o build/debug/main.o
 
 clean :
 	\rm build/debug/*.o
