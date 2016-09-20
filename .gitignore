@@ -35,6 +35,7 @@
 *.x86_64
 *.hex
 read
+Cats
 
 # Debug files
 *.dSYM/
