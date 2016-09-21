@@ -55,7 +55,11 @@ int main(int argc, char const *argv[]) {
 
 			if( bounds[i-1][j] > 1 && bounds[i-1][j] <= 3){
 				primes =( int*)realloc( primes, sizeof(int) * i+1);
+				if( primes == NULL){
+					fprintf(stderr, "Error in memory allocation\n");
+				}
 				primes[z] = bounds[i-1][j];
+				printf("||%d \n", primes[z]);
 				bounds[i-1][j]++;
 				z++;
 				continue;
@@ -77,10 +81,10 @@ int main(int argc, char const *argv[]) {
 					fprintf(stderr, "Error in memory allocation\n");
 				}
 				primes[z] = bounds[i-1][j];
-
+				printf("||%d|| \n", primes[z]);
+				bounds[i-1][j]++;
 				z++;
 			}
-			bounds[i-1][j]++;
 		}
 		z = 0;
 		i++;
