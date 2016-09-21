@@ -5,6 +5,9 @@ int main(int argc, char const *argv[]) {
 
 	int tries, j=0, i=0;
 	int** bounds;
+	int* primes;
+
+	primes = (int*)malloc(sizeof(int));
 
 	scanf(" %d", &tries);
 	if( tries > 10){
@@ -24,16 +27,24 @@ int main(int argc, char const *argv[]) {
 		}
 		while( j < 1){
 			scanf("%d %d", &bounds[i][j], &bounds[i][j+1]);
-			printf("%d %d\n", bounds[i][j], bounds[i][j+1] );
+			if( bounds[i][j] > bounds[i][j+1]) {
+				return 0;
+			}
 			j++;
 		}
 		j=0;
 		i++;
 	}
 
-	while (i--) {
-
+	tries = i;
+	i=0;
+	while( tries--) {
+		while( bounds[i][j] < bounds[i][j+1]){
+			if( (bounds[i][j] % bounds[i][j+1]) == 0){}
+		}
 	}
 
+	free(primes);
+	free(bounds);
 	return 0;
 }
