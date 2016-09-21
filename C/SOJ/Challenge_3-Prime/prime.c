@@ -13,9 +13,15 @@ int main(int argc, char const *argv[]) {
 	}
 
 	bounds = malloc(sizeof(int*)*tries);
+	if( bounds == NULL){
+		fprintf(stderr, "Error in memory allocation\n");
+	}
 
 	while(tries--){
 		bounds[i] = malloc(sizeof(int)*2);
+		if( bounds[i] == NULL){
+			fprintf(stderr, "Error in memory allocation\n");
+		}
 		while( j < 1){
 			scanf("%d %d", &bounds[i][j], &bounds[i][j+1]);
 			printf("%d %d\n", bounds[i][j], bounds[i][j+1] );
@@ -24,5 +30,10 @@ int main(int argc, char const *argv[]) {
 		j=0;
 		i++;
 	}
+
+	while (i--) {
+
+	}
+
 	return 0;
 }
