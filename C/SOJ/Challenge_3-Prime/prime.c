@@ -7,7 +7,7 @@ int main(int argc, char const *argv[]) {
 	int** bounds;
 	int* primes;
 
-	primes = (int*)malloc(sizeof(int));
+	primes = malloc(sizeof(int));
 	if( primes == NULL){
 		fprintf(stderr, "Error in memory allocation\n");
 	}
@@ -53,7 +53,7 @@ int main(int argc, char const *argv[]) {
 				continue;
 			}
 
-			if( bounds[i-1][j] > 1 || bounds[i-1][j] <= 3){
+			if( bounds[i-1][j] > 1 && bounds[i-1][j] <= 3){
 				primes =( int*)realloc( primes, sizeof(int) * i+1);
 				primes[z] = bounds[i-1][j];
 				bounds[i-1][j]++;
@@ -61,27 +61,26 @@ int main(int argc, char const *argv[]) {
 				continue;
 			}
 			//Inside For takes care of testing if an indevidual number is prime
-			for( int k=2; k<=(bounds[i-1][j]/2); ++k){
+			for( int k=4; k<=(bounds[i-1][j]/2); ++k){
 				/*If the For ends and there is no such result to satisfy the If statment
 					the number is not a prime */
 
-				if( bounds[i][j]%k == 0){
+				if( bounds[i-1][j]%k == 0){
 					flag = 1;
 					break;
 				}
 			}
 
 			if( flag == 0) {
-				primes = realloc( primes, sizeof(int) * i+1);
+				primes = (int*)realloc( primes, sizeof(int) * i+1);
 				if( primes == NULL){
 					fprintf(stderr, "Error in memory allocation\n");
 				}
 				primes[z] = bounds[i-1][j];
-				printf("%d ||", primes[z]);
+
 				z++;
 			}
 			bounds[i-1][j]++;
-			printf("%d %d\n", bounds[i-1][j] , bounds[i-1][j+1]);
 		}
 		z = 0;
 		i++;
@@ -89,11 +88,12 @@ int main(int argc, char const *argv[]) {
 
 	i=0;
 	while (i < tries) {
-		printf("%d ", primes[i]);
+		printf(" %d\n", primes[i]);
 		i++;
 	}
-
-	free(primes);
-	free(bounds);
+	for( i=0; i < tries; i++){
+		//free((int*)&primes[i]);
+	}
+	//free(bounds);
 	return 0;
 }
