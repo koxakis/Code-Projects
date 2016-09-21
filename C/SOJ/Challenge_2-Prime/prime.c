@@ -38,9 +38,13 @@ int main(int argc, char const *argv[]) {
 
 	tries = i;
 	i=0;
-	while( tries--) {
-		while( bounds[i][j] < bounds[i][j+1]){
-			if( (bounds[i][j] % bounds[i][j+1]) == 0){}
+	while( i < tries ) {
+		while( bounds[i][j] < bounds[i][j+1] ){
+			for( int k=2; k<=bounds[i][j]/2; ++k){
+				if( bounds[i][j]%k != 0){
+					primes =( int*)realloc( sizeof(int*) )
+				}
+			}
 		}
 	}
 
