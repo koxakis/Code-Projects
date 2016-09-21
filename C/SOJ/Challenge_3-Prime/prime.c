@@ -37,15 +37,29 @@ int main(int argc, char const *argv[]) {
 	}
 
 	tries = i;
-	i=0;
+	i=1;
+	//Outer while takes care of testing each entry test area
 	while( i < tries ) {
-		while( bounds[i][j] < bounds[i][j+1] ){
-			for( int k=2; k<=bounds[i][j]/2; ++k){
+		//Middle while takes care of testing the numbers in the test area
+		while( bounds[i-1][j] < bounds[i-1][j+1] ){
+			//Inside For takes care of testing if an indevidual number is prime
+			for( int k=2; k<=bounds[i-1][j]/2; ++k){
+				/*If the For ends and there is no such result to satisfy the If statment
+					the number is not a prime */
 				if( bounds[i][j]%k != 0){
-					primes =( int*)realloc( sizeof(int*) )
+					primes =( int*)realloc( primes, sizeof(int) * i+1);
+					primes[i-1] = bounds[i][j-1];
+					break;
 				}
 			}
 		}
+		i++;
+	}
+
+	i=0;
+	while (i < tries) {
+		printf("%d ", primes[i]);
+		i++;
 	}
 
 	free(primes);
