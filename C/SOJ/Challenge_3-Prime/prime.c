@@ -40,16 +40,24 @@ int main(int argc, char const *argv[]) {
 	}
 
 	i=1;
-	int flag, z;
+	int flag, z=0;
 	//Outer while takes care of testing each entry test area
 	while( i-1 < tries ) {
 
 		//Middle while takes care of testing the numbers in the test area
 		while( bounds[i-1][j] < bounds[i-1][j+1] ){
 			flag = 0;
-			if( bounds[i-1][j] < 1 || bounds[i-1][j] >= 3){
+
+			if( bounds[i-1][j] == 1){
+				bounds[i-1][j]++;
+				continue;
+			}
+
+			if( bounds[i-1][j] > 1 || bounds[i-1][j] <= 3){
 				primes =( int*)realloc( primes, sizeof(int) * i+1);
-				primes[i-1] = 1;
+				primes[z] = bounds[i-1][j];
+				bounds[i-1][j]++;
+				z++;
 				continue;
 			}
 			//Inside For takes care of testing if an indevidual number is prime
@@ -68,8 +76,8 @@ int main(int argc, char const *argv[]) {
 				if( primes == NULL){
 					fprintf(stderr, "Error in memory allocation\n");
 				}
-				primes[z-1] = bounds[i-1][j];
-				printf("%d ||", primes[z-1]);
+				primes[z] = bounds[i-1][j];
+				printf("%d ||", primes[z]);
 				z++;
 			}
 			bounds[i-1][j]++;
