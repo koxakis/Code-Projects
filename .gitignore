@@ -36,6 +36,8 @@
 *.hex
 read
 Cats
+prime
+Prime
 
 # Debug files
 *.dSYM/
