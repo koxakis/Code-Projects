@@ -4,13 +4,17 @@
 *.obj
 *.elf
 
-*.pbm
-*.pxm
-*.tsc
-*.pxa
-*.pxe
-*.tbl
+sobel_orig_no_change
+sobel_2nd_test_set
+sobel_1st_test_set
+*.grey
+*.jpg
+outfile.txt
+.~lock.Lab1_counts.ods#
 
+Lab_1/test/
+prime
+digit
 # Precompiled Headers
 *.gch
 *.pch
@@ -34,14 +38,7 @@
 *.i*86
 *.x86_64
 *.hex
-read
-Cats
-prime
-Prime
 
 # Debug files
 *.dSYM/
-
-# Java
-*.class
-commons-lang3-3.4.jar
+*.su
