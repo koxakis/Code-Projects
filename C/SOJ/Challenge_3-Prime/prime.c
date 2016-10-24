@@ -13,7 +13,7 @@ int main(int argc, char const *argv[]) {
 	}
 
 	scanf(" %d", &tries);
-	if( tries > 10){
+	if( tries > 20 || tries < 1){
 		printf("No more than 10\n" );
 		return 0;
 	}
@@ -29,8 +29,8 @@ int main(int argc, char const *argv[]) {
 			fprintf(stderr, "Error in memory allocation\n");
 		}
 		while( j < 1){
-			scanf("%d %d", &bounds[i][j], &bounds[i][j+1]);
-			if( bounds[i][j] > bounds[i][j+1]) {
+			scanf("%d %d %d", &bounds[i][j] ,&bounds[i][j+1], &bounds[i][j+2]);
+			if( bounds[i][j+1] > bounds[i][j+2]) {
 				return 0;
 			}
 			j++;
@@ -45,31 +45,31 @@ int main(int argc, char const *argv[]) {
 	while( i-1 < tries ) {
 
 		//Middle while takes care of testing the numbers in the test area
-		while( bounds[i-1][j] < bounds[i-1][j+1] ){
+		while( bounds[i-1][j+1] < bounds[i-1][j+2] ){
 			flag = 0;
 
-			if( bounds[i-1][j] == 1){
-				bounds[i-1][j]++;
+			if( bounds[i-1][j+1] == 1){
+				bounds[i-1][j+1]++;
 				continue;
 			}
 
-			if( bounds[i-1][j] > 1 && bounds[i-1][j] <= 3){
+			if( bounds[i-1][j+1] > 1 && bounds[i-1][j+2] <= 3){
 				primes =( int*)realloc( primes, sizeof(int) * i+1);
 				if( primes == NULL){
 					fprintf(stderr, "Error in memory allocation\n");
 				}
-				primes[z] = bounds[i-1][j];
+				primes[z] = bounds[i-1][j+1];
 				printf("||%d \n", primes[z]);
-				bounds[i-1][j]++;
+				bounds[i-1][j+1]++;
 				z++;
 				continue;
 			}
 			//Inside For takes care of testing if an indevidual number is prime
-			for( int k=4; k<=(bounds[i-1][j]/2); ++k){
+			for( int k=4; k<=(bounds[i-1][j+1]/2); ++k){
 				/*If the For ends and there is no such result to satisfy the If statment
 					the number is not a prime */
 
-				if( bounds[i-1][j]%k == 0){
+				if( bounds[i-1][j+1]%k == 0){
 					flag = 1;
 					break;
 				}
@@ -80,9 +80,9 @@ int main(int argc, char const *argv[]) {
 				if( primes == NULL){
 					fprintf(stderr, "Error in memory allocation\n");
 				}
-				primes[z] = bounds[i-1][j];
+				primes[z] = bounds[i-1][j+1];
 				printf("||%d|| \n", primes[z]);
-				bounds[i-1][j]++;
+				bounds[i-1][j+1]++;
 				z++;
 			}
 		}
@@ -96,8 +96,8 @@ int main(int argc, char const *argv[]) {
 		i++;
 	}
 	for( i=0; i < tries; i++){
-		//free((int*)&primes[i]);
+		free((int*)&primes[i]);
 	}
-	//free(bounds);
+	free(bounds);
 	return 0;
 }
