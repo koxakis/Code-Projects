@@ -5,6 +5,8 @@
 *.elf
 
 thread
+thread_test
+thread_test_cuda
 
 sobel_orig_no_change
 sobel_2nd_test_set
