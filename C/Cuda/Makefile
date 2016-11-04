@@ -12,12 +12,12 @@ CFLAGSh =  -Wall -O4 -g -std=c99
 #These are the flags passed to the linker. Nothing in our case
 LDFLAGS = -lm
 
-thread_test.o: thread_test.c
+thread_test: thread_test.c
 
 %: %.c
 	$(CCh) $(CFLAGSh) -o $@ $< $(LDFLAGS)
 
-thread_test_cuda.o: thread_test_cuda.cu
+thread_test_cuda: thread_test_cuda.cu
 %: %.cu
 	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
 

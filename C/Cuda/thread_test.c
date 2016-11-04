@@ -30,10 +30,14 @@ int main(int argc, char const *argv[]) {
 	**h_buffer ,
 	**h_OutputCPU;
 
-	int dim_x, dim_y, max_withd = 3;
+	int dim_x = 1, dim_y = 1, max_withd = 3;
 
-	printf("Intert a x and y dims ");
-	scanf("%d %d", &dim_x, &dim_y);
+	if ( argc != 3) {
+		printf("Insuffisend arguments exiting\n");
+	} else {
+		dim_x = atoi(argv[1]);
+		dim_y = atoi(argv[2]);
+	}
 
 	h_matrix = (double**)malloc(sizeof(double*)*dim_y);
 	if ( h_matrix == NULL){
