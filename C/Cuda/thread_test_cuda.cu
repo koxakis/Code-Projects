@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "gputimer.h"
+#include <time.h>
 
 // CUDA runtime
 #include <cuda_runtime.h>
@@ -7,7 +9,7 @@
 // Utilities and system includes
 //#include "helper_functions.h"
 
-#define MATRIX_1D
+//#define DEBUG
 
 #define cudaCheckErrors() {                                                               \
         cudaError_t error=cudaGetLastError();                                                        \
@@ -77,6 +79,10 @@ int main(int argc, char const *argv[]) {
 	*d_matrix ,
 	*d_buffer ,
 	*d_output;
+
+	double overal_GPU_time = 0, overal_CPU_time = 0, overal_data_transfer_time = 0;
+	clock_t start, stop;
+	GpuTimer timer;
 
 	int dim_x = 1, dim_y = 1, max_withd = 3;
 
@@ -157,23 +163,21 @@ int main(int argc, char const *argv[]) {
 
 	d_output = NULL;
 	cudaMalloc((void**)&d_output, sizeof(double)*dim_x*dim_y);
-#ifdef MATRIX_2D
-	for ( int i = 0; i < dim_y; i++) {
-		//d_output[i] = NULL;
-		cudaMalloc((void**)&d_output[i], sizeof(double)*dim_x);
-		cudaCheckErrors();
-	}
-#endif
 
 	printf("Transfering data to cuda Device...\n");
 
+	timer.Start();
 	cudaMemcpy( d_matrix, h_trans_matrix, dim_x*dim_y*sizeof(double) , cudaMemcpyHostToDevice);
+	timer.Stop();
+	overal_data_transfer_time += timer.Elapsed();
 	cudaCheckErrors();
 
 	printf("Running CPU code...\n");
 
+	start = clock();
 	convolutionHostRow(h_matrix, h_buffer, dim_x, dim_y);
 	convolutionHostColumn(h_buffer, h_OutputCPU, dim_x, dim_y);
+	stop = clock();
 
 	//kernel prep
 	printf("Running GPU code...\n");
@@ -192,22 +196,41 @@ int main(int argc, char const *argv[]) {
 
 	printf("CUDA kernel launch %d blocks of %d threads\n", grid.x*grid.y, threads.x*threads.y);
 
+	timer.Start();
 	convolutionDeviceRow<<<grid, threads>>>( d_matrix, d_buffer, dim_x, dim_y);
+	timer.Stop();
+	overal_GPU_time += timer.Elapsed();
 	cudaDeviceSynchronize();
 	cudaCheckErrors();
 
 	printf("CUDA kernel launch %d blocks of %d threads\n", grid.x*grid.y, threads.x*threads.y);
+
+	timer.Start();
 	convolutionDeviceColumn<<<grid, threads>>>( d_buffer, d_output, dim_x, dim_y);
+	timer.Stop();
+	overal_GPU_time += timer.Elapsed();
+
 	cudaDeviceSynchronize();
 	cudaCheckErrors();
 
+	timer.Start();
 	cudaMemcpy( h_OutputGPU, d_output, sizeof(double)*dim_x*dim_y, cudaMemcpyDeviceToHost);
+	timer.Stop();
+	overal_data_transfer_time += timer.Elapsed();
+
 	cudaCheckErrors();
+
+	printf("Time elapsed on GPU= %g ms\n", overal_GPU_time);
+
+	overal_CPU_time = (double)(end - start) * 1000.0 / CLOCKS_PER_SEC ;
+	printf ("Time elapsed on CPU = %g ms\n", overal_CPU_time);
+#ifdef DEBUG
 
 	printf("\nInput Matrix\n********************************************************************\n" );
 	for ( int i = 0; i < dim_x; i++){
 		for (int j = 0; j < dim_y; j++) {
 			printf(" %*g", max_withd, h_matrix[i][j]);
+
 		}
 		printf("\n");
 	}
@@ -227,6 +250,8 @@ int main(int argc, char const *argv[]) {
 		}
 		printf("\n");
 	}
+#endif
+
 
 	for ( int i = 0; i < dim_x; i++) {
 			free(h_OutputCPU[i]);
