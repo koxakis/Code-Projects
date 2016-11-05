@@ -84,7 +84,10 @@ int main(int argc, char const *argv[]) {
 	clock_t start, stop;
 	GpuTimer timer;
 
-	int dim_x = 1, dim_y = 1, max_withd = 3;
+	int dim_x = 1, dim_y = 1;
+#ifdef DEBUG
+	int max_withd = 3;
+#endif
 
 	if ( argc != 3) {
 		printf("Insuffisend arguments exiting\n");
@@ -222,7 +225,7 @@ int main(int argc, char const *argv[]) {
 
 	printf("Time elapsed on GPU= %g ms\n", overal_GPU_time);
 
-	overal_CPU_time = (double)(end - start) * 1000.0 / CLOCKS_PER_SEC ;
+	overal_CPU_time = (double)(stop - start) * 1000.0 / CLOCKS_PER_SEC ;
 	printf ("Time elapsed on CPU = %g ms\n", overal_CPU_time);
 #ifdef DEBUG
 
