@@ -223,10 +223,14 @@ int main(int argc, char const *argv[]) {
 
 	cudaCheckErrors();
 
-	printf("Time elapsed on GPU= %g ms\n", overal_GPU_time);
+	printf("\nTime elapsed on GPU( computation) = %g ms\n", overal_GPU_time);
+	printf("Time elapsed on GPU( memory transfers) = %g ms\n", overal_data_transfer_time);
+	printf("\nTime elapsed on GPU( overal) = %g ms\n", overal_GPU_time + overal_data_transfer_time);
+
+
 
 	overal_CPU_time = (double)(stop - start) * 1000.0 / CLOCKS_PER_SEC ;
-	printf ("Time elapsed on CPU = %g ms\n", overal_CPU_time);
+	printf ("\nTime elapsed on CPU = %g ms\n", overal_CPU_time);
 #ifdef DEBUG
 
 	printf("\nInput Matrix\n********************************************************************\n" );
