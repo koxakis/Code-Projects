@@ -9,7 +9,7 @@
 // Utilities and system includes
 //#include "helper_functions.h"
 
-//#define DEBUG
+#define DEBUG
 
 #define cudaCheckErrors() {                                                               \
         cudaError_t error=cudaGetLastError();                                                        \
@@ -97,13 +97,13 @@ int main(int argc, char const *argv[]) {
 	}
 
 	printf("Initializing host matricies...\n");
-	h_matrix = (double**)malloc(sizeof(double*)*dim_y);
+	h_matrix = (double**)malloc(sizeof(double*)*dim_x);
 	if ( h_matrix == NULL){
 		fprintf(stderr, "Error in Host Matrix allocation\n");
 		exit(EXIT_FAILURE);
 	}
-	for ( int i = 0; i < dim_x; i++){
-		h_matrix[i] = (double*)realloc(h_matrix[i], sizeof(double) * dim_y);
+	for ( int i = 0; i < dim_y; i++){
+		h_matrix[i] = (double*)malloc( sizeof(double) * dim_y);
 		if (h_matrix[i] == NULL){
 			fprintf(stderr, "Error in Host Matrix allocation\n" );
 			exit(EXIT_FAILURE);
