@@ -9,7 +9,7 @@
 // Utilities and system includes
 //#include "helper_functions.h"
 
-#define DEBUG
+//#define DEBUG
 
 #define cudaCheckErrors() {                                                               \
         cudaError_t error=cudaGetLastError();                                                        \
