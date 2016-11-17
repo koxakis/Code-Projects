@@ -9,7 +9,7 @@
 // Utilities and system includes
 //#include "helper_functions.h"
 
-//#define DEBUG
+#define DEBUG
 
 #define cudaCheckErrors() {                                                               \
         cudaError_t error=cudaGetLastError();                                                        \
@@ -91,6 +91,7 @@ int main(int argc, char const *argv[]) {
 
 	if ( argc != 3) {
 		printf("Insuffisend arguments exiting\n");
+		exit(EXIT_FAILURE);
 	} else {
 		dim_x = atoi(argv[1]);
 		dim_y = atoi(argv[2]);
