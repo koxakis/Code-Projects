@@ -7,6 +7,7 @@
 thread
 thread_test
 thread_test_cuda
+main_game
 
 sobel_orig_no_change
 sobel_2nd_test_set
