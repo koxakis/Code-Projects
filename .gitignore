@@ -7,8 +7,10 @@
 thread
 thread_test
 thread_test_cuda
-main_game
+C/text_based_game/main_game
 
+main_game
+vivado_projects/
 sobel_orig_no_change
 sobel_2nd_test_set
 sobel_1st_test_set
