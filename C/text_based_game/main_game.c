@@ -1,3 +1,4 @@
+// Main game loop and structure //
 #include <stdio.h>
 #include "movment.h"
 
