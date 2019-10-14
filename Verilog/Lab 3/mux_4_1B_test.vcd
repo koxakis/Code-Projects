@@ -1,0 +1,87 @@
+$date
+	Sun Nov 30 19:22:52 2014
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module muxB_4_1_test $end
+$var wire 1 ! out $end
+$var reg 1 " A $end
+$var reg 1 # B $end
+$var reg 1 $ C $end
+$var reg 1 % D $end
+$var reg 1 & sel0 $end
+$var reg 1 ' sel1 $end
+$scope module m1 $end
+$var wire 1 ( A $end
+$var wire 1 ) B $end
+$var wire 1 * C $end
+$var wire 1 + D $end
+$var wire 1 , mux0 $end
+$var wire 1 - mux1 $end
+$var wire 1 ! out $end
+$var wire 1 . sel0 $end
+$var wire 1 / sel1 $end
+$scope module m0 $end
+$var wire 1 ( A $end
+$var wire 1 ) B $end
+$var wire 1 , out $end
+$var wire 1 . sel $end
+$upscope $end
+$scope module m1 $end
+$var wire 1 * A $end
+$var wire 1 + B $end
+$var wire 1 - out $end
+$var wire 1 . sel $end
+$upscope $end
+$scope module m2 $end
+$var wire 1 , A $end
+$var wire 1 - B $end
+$var wire 1 ! out $end
+$var wire 1 / sel $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0/
+0.
+0-
+0,
+1+
+0*
+1)
+0(
+0'
+0&
+1%
+0$
+1#
+0"
+0!
+$end
+#500
+1!
+1,
+1-
+1&
+1.
+#1000
+0!
+0,
+0-
+1'
+1/
+0&
+0.
+#1500
+1!
+1,
+1-
+1&
+1.
+#2000

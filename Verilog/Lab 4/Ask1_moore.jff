@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Created with JFLAP 6.4.--><structure>
+	<type>moore</type>
+	<automaton>
+		<!--The list of states.-->
+		<state id="0" name="0₵">
+			<x>441.0</x>
+			<y>191.0</y>
+			<initial/>
+			<output>0</output>
+		</state>
+		<state id="1" name="5₵">
+			<x>590.0</x>
+			<y>88.0</y>
+			<output>0</output>
+		</state>
+		<state id="2" name="10₵">
+			<x>744.0</x>
+			<y>90.0</y>
+			<output>0</output>
+		</state>
+		<state id="3" name="15₵">
+			<x>901.0</x>
+			<y>92.0</y>
+			<output>0</output>
+		</state>
+		<state id="4" name="20₵">
+			<x>1029.0</x>
+			<y>200.0</y>
+			<output>1</output>
+		</state>
+		<!--The list of transitions.-->
+		<transition>
+			<from>0</from>
+			<to>2</to>
+			<read>in10</read>
+			<transout>0</transout>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>4</to>
+			<read>in5 || in10</read>
+			<transout>1</transout>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>0</to>
+			<read/>
+			<transout>0</transout>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>4</to>
+			<read>in10</read>
+			<transout>1</transout>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>1</to>
+			<read>in5' in10' </read>
+			<transout>0</transout>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>2</to>
+			<read>in5</read>
+			<transout>0</transout>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>3</to>
+			<read>in5</read>
+			<transout>0</transout>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>3</to>
+			<read>in5' in10'</read>
+			<transout>0</transout>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>2</to>
+			<read>in5' in10'</read>
+			<transout>0</transout>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>0</to>
+			<read>in5' in10'</read>
+			<transout>0</transout>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>1</to>
+			<read>in5</read>
+			<transout>0</transout>
+		</transition>
+	</automaton>
+</structure>

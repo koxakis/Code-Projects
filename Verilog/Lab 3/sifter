@@ -1,0 +1,113 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 11;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8aea398 .scope module, "Shifter_test" "Shifter_test" 2 2;
+ .timescale -9 -11;
+v0x8ae7908_0 .var "LOAD", 0 0;
+v0x8ae7988_0 .var "clk", 0 0;
+v0x8ae79f8_0 .var "in", 7 0;
+v0x8ae7a68_0 .var "left_in", 0 0;
+v0x8ae7ad8_0 .net "out", 7 0, v0x8ae7888_0; 1 drivers
+S_0x8ac7900 .scope module, "c1" "shifter_8bit" 2 36, 3 1, S_0x8aea398;
+ .timescale 0 0;
+v0x8ac7980_0 .net "LOAD", 0 0, v0x8ae7908_0; 1 drivers
+v0x8ae7700_0 .net "clk", 0 0, v0x8ae7988_0; 1 drivers
+v0x8ae7760_0 .net "in", 7 0, v0x8ae79f8_0; 1 drivers
+v0x8ae77c0_0 .net "left_in", 0 0, v0x8ae7a68_0; 1 drivers
+v0x8ae7828_0 .alias "out", 7 0, v0x8ae7ad8_0;
+v0x8ae7888_0 .var "tmp", 7 0;
+E_0x8aeba70 .event posedge, v0x8ae7700_0;
+    .scope S_0x8ac7900;
+T_0 ;
+    %wait E_0x8aeba70;
+    %load/v 8, v0x8ac7980_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %load/v 8, v0x8ae7760_0, 8;
+    %set/v v0x8ae7888_0, 8, 8;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v0x8ae77c0_0, 1;
+    %jmp/0xz  T_0.2, 8;
+    %ix/load 1, 7, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_0.4, 4;
+    %load/x1p 16, v0x8ae7760_0, 1;
+    %jmp T_0.5;
+T_0.4 ;
+    %mov 16, 2, 1;
+T_0.5 ;
+    %mov 8, 16, 1; Move signal select into place
+    %load/v 9, v0x8ae7760_0, 7; Select 7 out of 8 bits
+    %set/v v0x8ae7888_0, 8, 8;
+    %jmp T_0.3;
+T_0.2 ;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_0.6, 4;
+    %load/x1p 16, v0x8ae7760_0, 7;
+    %jmp T_0.7;
+T_0.6 ;
+    %mov 16, 2, 7;
+T_0.7 ;
+    %mov 8, 16, 7; Move signal select into place
+    %load/v 15, v0x8ae7760_0, 1; Select 1 out of 8 bits
+    %set/v v0x8ae7888_0, 8, 8;
+T_0.3 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x8aea398;
+T_1 ;
+    %set/v v0x8ae7988_0, 0, 1;
+    %end;
+    .thread T_1;
+    .scope S_0x8aea398;
+T_2 ;
+    %set/v v0x8ae7a68_0, 0, 1;
+    %end;
+    .thread T_2;
+    .scope S_0x8aea398;
+T_3 ;
+    %set/v v0x8ae7908_0, 0, 1;
+    %end;
+    .thread T_3;
+    .scope S_0x8aea398;
+T_4 ;
+    %delay 100, 0;
+    %load/v 8, v0x8ae7988_0, 1;
+    %inv 8, 1;
+    %set/v v0x8ae7988_0, 8, 1;
+    %jmp T_4;
+    .thread T_4;
+    .scope S_0x8aea398;
+T_5 ;
+    %vpi_call 2 16 "$dumpfile", "Shifter_test.vcd";
+    %vpi_call 2 17 "$dumpvars", 1'sb0, S_0x8aea398;
+    %vpi_call 2 18 "$monitor", "in %b, left_in %b, out %b", v0x8ae79f8_0, v0x8ae7a68_0, v0x8ae7ad8_0;
+    %delay 0, 0;
+    %movi 8, 24, 8;
+    %set/v v0x8ae79f8_0, 8, 8;
+    %delay 1000, 0;
+    %set/v v0x8ae7a68_0, 1, 1;
+    %delay 2500, 0;
+    %movi 8, 231, 8;
+    %set/v v0x8ae79f8_0, 8, 8;
+    %delay 500, 0;
+    %set/v v0x8ae7a68_0, 1, 1;
+    %delay 500, 0;
+    %set/v v0x8ae7a68_0, 0, 1;
+    %delay 500, 0;
+    %set/v v0x8ae7a68_0, 0, 1;
+    %delay 50000, 0;
+    %vpi_call 2 33 "$finish";
+    %end;
+    .thread T_5;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "sifter_test.v";
+    "8bit_slider.v";

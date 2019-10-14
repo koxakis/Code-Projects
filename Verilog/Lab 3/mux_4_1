@@ -1,0 +1,104 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 11;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x87b6050 .scope module, "mux_4_1_test" "mux_4_1_test" 2 2;
+ .timescale -9 -11;
+v0x87b5258_0 .var "A", 0 0;
+v0x87b52b8_0 .var "B", 0 0;
+v0x87cfb10_0 .var "C", 0 0;
+v0x87cfb60_0 .var "D", 0 0;
+v0x87cfbd0_0 .net "out", 0 0, L_0x87d03a8; 1 drivers
+v0x87cfc40_0 .var "sel0", 0 0;
+v0x87cfcd0_0 .var "sel1", 0 0;
+S_0x8794bb0 .scope module, "m1" "mux_4_1" 2 30, 3 1, S_0x87b6050;
+ .timescale 0 0;
+L_0x87b4e00 .functor NOT 1, v0x87cfcd0_0, C4<0>, C4<0>, C4<0>;
+L_0x87cfd98 .functor NOT 1, v0x87cfc40_0, C4<0>, C4<0>, C4<0>;
+L_0x87cfe08 .functor AND 1, L_0x87b4e00, L_0x87cfd98, C4<1>, C4<1>;
+L_0x87cfeb0 .functor AND 1, L_0x87cfe08, v0x87b5258_0, C4<1>, C4<1>;
+L_0x87cff58 .functor NOT 1, v0x87cfcd0_0, C4<0>, C4<0>, C4<0>;
+L_0x87cff90 .functor AND 1, L_0x87cff58, v0x87cfc40_0, C4<1>, C4<1>;
+L_0x87d0000 .functor AND 1, L_0x87cff90, v0x87b52b8_0, C4<1>, C4<1>;
+L_0x87d00a8 .functor OR 1, L_0x87cfeb0, L_0x87d0000, C4<0>, C4<0>;
+L_0x87d0150 .functor NOT 1, v0x87cfc40_0, C4<0>, C4<0>, C4<0>;
+L_0x87cfdd0 .functor AND 1, v0x87cfcd0_0, L_0x87d0150, C4<1>, C4<1>;
+L_0x87d0258 .functor AND 1, L_0x87cfdd0, v0x87cfb10_0, C4<1>, C4<1>;
+L_0x87d0300 .functor OR 1, L_0x87d00a8, L_0x87d0258, C4<0>, C4<0>;
+L_0x87d03e0 .functor AND 1, v0x87cfcd0_0, v0x87cfc40_0, C4<1>, C4<1>;
+L_0x87d0418 .functor AND 1, L_0x87d03e0, v0x87cfb60_0, C4<1>, C4<1>;
+L_0x87d03a8 .functor OR 1, L_0x87d0300, L_0x87d0418, C4<0>, C4<0>;
+v0x87934d8_0 .net "A", 0 0, v0x87b5258_0; 1 drivers
+v0x87b4970_0 .net "B", 0 0, v0x87b52b8_0; 1 drivers
+v0x87b49d0_0 .net "C", 0 0, v0x87cfb10_0; 1 drivers
+v0x87b4a30_0 .net "D", 0 0, v0x87cfb60_0; 1 drivers
+v0x87b4a98_0 .net *"_s0", 0 0, L_0x87b4e00; 1 drivers
+v0x87b4af8_0 .net *"_s10", 0 0, L_0x87cff90; 1 drivers
+v0x87b4b78_0 .net *"_s12", 0 0, L_0x87d0000; 1 drivers
+v0x87b4bd8_0 .net *"_s14", 0 0, L_0x87d00a8; 1 drivers
+v0x87b4c60_0 .net *"_s16", 0 0, L_0x87d0150; 1 drivers
+v0x87b4cc0_0 .net *"_s18", 0 0, L_0x87cfdd0; 1 drivers
+v0x87b4d50_0 .net *"_s2", 0 0, L_0x87cfd98; 1 drivers
+v0x87b4db0_0 .net *"_s20", 0 0, L_0x87d0258; 1 drivers
+v0x87b4e48_0 .net *"_s22", 0 0, L_0x87d0300; 1 drivers
+v0x87b4ea8_0 .net *"_s24", 0 0, L_0x87d03e0; 1 drivers
+v0x87b4f48_0 .net *"_s26", 0 0, L_0x87d0418; 1 drivers
+v0x87b4fa8_0 .net *"_s4", 0 0, L_0x87cfe08; 1 drivers
+v0x87b5050_0 .net *"_s6", 0 0, L_0x87cfeb0; 1 drivers
+v0x87b50b0_0 .net *"_s8", 0 0, L_0x87cff58; 1 drivers
+v0x87b5150_0 .alias "out", 0 0, v0x87cfbd0_0;
+v0x87b51b0_0 .net "sel0", 0 0, v0x87cfc40_0; 1 drivers
+v0x87b5100_0 .net "sel1", 0 0, v0x87cfcd0_0; 1 drivers
+    .scope S_0x87b6050;
+T_0 ;
+    %set/v v0x87b5258_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0x87b6050;
+T_1 ;
+    %set/v v0x87b52b8_0, 1, 1;
+    %end;
+    .thread T_1;
+    .scope S_0x87b6050;
+T_2 ;
+    %set/v v0x87cfb10_0, 0, 1;
+    %end;
+    .thread T_2;
+    .scope S_0x87b6050;
+T_3 ;
+    %set/v v0x87cfb60_0, 1, 1;
+    %end;
+    .thread T_3;
+    .scope S_0x87b6050;
+T_4 ;
+    %vpi_call 2 10 "$dumpfile", "mux_4_1_test.vcd";
+    %vpi_call 2 11 "$dumpvars", 1'sb0, S_0x87b6050;
+    %vpi_call 2 12 "$monitor", "sel1 %b sel0 %b out %b", v0x87cfcd0_0, v0x87cfc40_0, v0x87cfbd0_0;
+    %delay 0, 0;
+    %set/v v0x87cfc40_0, 0, 1;
+    %delay 0, 0;
+    %set/v v0x87cfcd0_0, 0, 1;
+    %delay 500, 0;
+    %set/v v0x87cfc40_0, 1, 1;
+    %delay 0, 0;
+    %set/v v0x87cfcd0_0, 0, 1;
+    %delay 500, 0;
+    %set/v v0x87cfc40_0, 0, 1;
+    %delay 0, 0;
+    %set/v v0x87cfcd0_0, 1, 1;
+    %delay 500, 0;
+    %set/v v0x87cfc40_0, 1, 1;
+    %delay 0, 0;
+    %set/v v0x87cfcd0_0, 1, 1;
+    %delay 500, 0;
+    %vpi_call 2 26 "$finish";
+    %end;
+    .thread T_4;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "4_1_mux_test.v";
+    "4_1_mux.v";

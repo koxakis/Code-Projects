@@ -1,0 +1,84 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8bd40a0 .scope module, "test" "test" 2 1;
+ .timescale 0 0;
+v0x8bf5aa0_0 .var "a", 0 0;
+v0x8bf5af0_0 .var "b", 0 0;
+v0x8bf5b40_0 .var "c", 0 0;
+v0x8bf5b90_0 .net "f", 0 0, L_0x8bf5a68; 1 drivers
+S_0x8bd43a0 .scope module, "m1" "match_gate" 2 22, 3 1, S_0x8bd40a0;
+ .timescale 0 0;
+v0x8bf5708_0 .net "a", 0 0, v0x8bf5aa0_0; 1 drivers
+v0x8bf5790_0 .net "b", 0 0, v0x8bf5af0_0; 1 drivers
+v0x8bf5818_0 .net "c", 0 0, v0x8bf5b40_0; 1 drivers
+v0x8bf58a0_0 .alias "f", 0 0, v0x8bf5b90_0;
+v0x8bf5908_0 .net "x", 0 0, L_0x8bf57e0; 1 drivers
+v0x8bf5990_0 .net "y", 0 0, L_0x8bf5868; 1 drivers
+v0x8bf5a18_0 .net "z", 0 0, L_0x8bf5e30; 1 drivers
+S_0x8bf54d0 .scope module, "U1" "NAND2" 3 8, 4 1, S_0x8bd43a0;
+ .timescale 0 0;
+L_0x8bf5c18 .functor AND 1, v0x8bf5aa0_0, v0x8bf5af0_0, C4<1>, C4<1>;
+L_0x8bf57e0 .functor NOT 1, L_0x8bf5c18, C4<0>, C4<0>, C4<0>;
+v0x8bf5550_0 .net *"_s0", 0 0, L_0x8bf5c18; 1 drivers
+v0x8bf55a0_0 .alias "a", 0 0, v0x8bf5708_0;
+v0x8bf5610_0 .alias "b", 0 0, v0x8bf5790_0;
+v0x8bf5680_0 .alias "z", 0 0, v0x8bf5908_0;
+S_0x8bf52a8 .scope module, "U2" "NAND2" 3 10, 4 1, S_0x8bd43a0;
+ .timescale 0 0;
+L_0x8bf5d20 .functor AND 1, v0x8bf5af0_0, v0x8bf5b40_0, C4<1>, C4<1>;
+L_0x8bf5868 .functor NOT 1, L_0x8bf5d20, C4<0>, C4<0>, C4<0>;
+v0x8bf5328_0 .net *"_s0", 0 0, L_0x8bf5d20; 1 drivers
+v0x8bf5378_0 .alias "a", 0 0, v0x8bf5790_0;
+v0x8bf53d8_0 .alias "b", 0 0, v0x8bf5818_0;
+v0x8bf5448_0 .alias "z", 0 0, v0x8bf5990_0;
+S_0x8bf5088 .scope module, "U3" "NAND2" 3 12, 4 1, S_0x8bd43a0;
+ .timescale 0 0;
+L_0x8bf5df8 .functor AND 1, v0x8bf5aa0_0, v0x8bf5b40_0, C4<1>, C4<1>;
+L_0x8bf5e30 .functor NOT 1, L_0x8bf5df8, C4<0>, C4<0>, C4<0>;
+v0x8bf5108_0 .net *"_s0", 0 0, L_0x8bf5df8; 1 drivers
+v0x8bf5178_0 .alias "a", 0 0, v0x8bf5708_0;
+v0x8bf51d8_0 .alias "b", 0 0, v0x8bf5818_0;
+v0x8bf5238_0 .alias "z", 0 0, v0x8bf5a18_0;
+S_0x8bf7f30 .scope module, "U4" "NAND3" 3 14, 5 1, S_0x8bd43a0;
+ .timescale 0 0;
+L_0x8bf5ea0 .functor AND 1, L_0x8bf57e0, L_0x8bf5868, C4<1>, C4<1>;
+L_0x8bf59e0 .functor AND 1, L_0x8bf5ea0, L_0x8bf5e30, C4<1>, C4<1>;
+L_0x8bf5a68 .functor NOT 1, L_0x8bf59e0, C4<0>, C4<0>, C4<0>;
+v0x8bd48d8_0 .net *"_s0", 0 0, L_0x8bf5ea0; 1 drivers
+v0x8bf4e80_0 .net *"_s2", 0 0, L_0x8bf59e0; 1 drivers
+v0x8bf4ee0_0 .alias "a", 0 0, v0x8bf5908_0;
+v0x8bf4f40_0 .alias "b", 0 0, v0x8bf5990_0;
+v0x8bf4fa8_0 .alias "c", 0 0, v0x8bf5a18_0;
+v0x8bf5008_0 .alias "f", 0 0, v0x8bf5b90_0;
+    .scope S_0x8bd40a0;
+T_0 ;
+    %vpi_call 2 8 "$dumpfile", "test.vcd";
+    %vpi_call 2 9 "$dumpvars", 1'sb0, S_0x8bd40a0;
+    %delay 10, 0;
+    %set/v v0x8bf5aa0_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0x8bf5af0_0, 1, 1;
+    %delay 15, 0;
+    %set/v v0x8bf5b40_0, 1, 1;
+    %delay 20, 0;
+    %set/v v0x8bf5aa0_0, 0, 1;
+    %delay 15, 0;
+    %set/v v0x8bf5af0_0, 0, 1;
+    %delay 15, 0;
+    %set/v v0x8bf5b40_0, 0, 1;
+    %delay 513, 0;
+    %vpi_call 2 19 "$finish";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 6;
+    "N/A";
+    "<interactive>";
+    "test.v";
+    "match_gate.v";
+    "Paradosi.v";
+    "Paradosi2.v";

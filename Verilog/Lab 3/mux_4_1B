@@ -1,0 +1,117 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 11;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8940810 .scope module, "muxB_4_1_test" "muxB_4_1_test" 2 2;
+ .timescale -9 -11;
+v0x897dbf0_0 .var "A", 0 0;
+v0x897dc78_0 .var "B", 0 0;
+v0x897dd00_0 .var "C", 0 0;
+v0x897dd88_0 .var "D", 0 0;
+v0x897de10_0 .net "out", 0 0, L_0x897da68; 1 drivers
+v0x897de98_0 .var "sel0", 0 0;
+v0x897dee8_0 .var "sel1", 0 0;
+S_0x8963018 .scope module, "m1" "muxB_4_1" 2 30, 3 1, S_0x8940810;
+ .timescale 0 0;
+v0x897d7d0_0 .net "A", 0 0, v0x897dbf0_0; 1 drivers
+v0x897d840_0 .net "B", 0 0, v0x897dc78_0; 1 drivers
+v0x897d8b0_0 .net "C", 0 0, v0x897dd00_0; 1 drivers
+v0x897d920_0 .net "D", 0 0, v0x897dd88_0; 1 drivers
+v0x897d990_0 .net "mux0", 0 0, L_0x897e080; 1 drivers
+v0x897da18_0 .net "mux1", 0 0, L_0x897e208; 1 drivers
+v0x897daa0_0 .alias "out", 0 0, v0x897de10_0;
+v0x897daf0_0 .net "sel0", 0 0, v0x897de98_0; 1 drivers
+v0x897dba0_0 .net "sel1", 0 0, v0x897dee8_0; 1 drivers
+S_0x897d470 .scope module, "m0" "mux_2_1" 3 10, 4 1, S_0x8963018;
+ .timescale -9 -11;
+L_0x897df70 .functor NOT 1, v0x897de98_0, C4<0>, C4<0>, C4<0>;
+L_0x897db68 .functor AND 1, L_0x897df70, v0x897dbf0_0, C4<1>, C4<1>;
+L_0x897e048 .functor AND 1, v0x897de98_0, v0x897dc78_0, C4<1>, C4<1>;
+L_0x897e080 .functor OR 1, L_0x897db68, L_0x897e048, C4<0>, C4<0>;
+v0x897d4f0_0 .alias "A", 0 0, v0x897d7d0_0;
+v0x897d560_0 .alias "B", 0 0, v0x897d840_0;
+v0x897d5c0_0 .net *"_s0", 0 0, L_0x897df70; 1 drivers
+v0x897d620_0 .net *"_s2", 0 0, L_0x897db68; 1 drivers
+v0x897d670_0 .net *"_s4", 0 0, L_0x897e048; 1 drivers
+v0x897d6d0_0 .alias "out", 0 0, v0x897d990_0;
+v0x897d760_0 .alias "sel", 0 0, v0x897daf0_0;
+S_0x8962298 .scope module, "m1" "mux_2_1" 3 11, 4 1, S_0x8963018;
+ .timescale -9 -11;
+L_0x897e128 .functor NOT 1, v0x897de98_0, C4<0>, C4<0>, C4<0>;
+L_0x897e160 .functor AND 1, L_0x897e128, v0x897dd00_0, C4<1>, C4<1>;
+L_0x897e1d0 .functor AND 1, v0x897de98_0, v0x897dd88_0, C4<1>, C4<1>;
+L_0x897e208 .functor OR 1, L_0x897e160, L_0x897e1d0, C4<0>, C4<0>;
+v0x897d1f0_0 .alias "A", 0 0, v0x897d8b0_0;
+v0x897d240_0 .alias "B", 0 0, v0x897d920_0;
+v0x897d290_0 .net *"_s0", 0 0, L_0x897e128; 1 drivers
+v0x897d2e0_0 .net *"_s2", 0 0, L_0x897e160; 1 drivers
+v0x897d330_0 .net *"_s4", 0 0, L_0x897e1d0; 1 drivers
+v0x897d390_0 .alias "out", 0 0, v0x897da18_0;
+v0x897d420_0 .alias "sel", 0 0, v0x897daf0_0;
+S_0x8963098 .scope module, "m2" "mux_2_1" 3 12, 4 1, S_0x8963018;
+ .timescale -9 -11;
+L_0x897e2b0 .functor NOT 1, v0x897dee8_0, C4<0>, C4<0>, C4<0>;
+L_0x897e2e8 .functor AND 1, L_0x897e2b0, L_0x897e080, C4<1>, C4<1>;
+L_0x897d9e0 .functor AND 1, v0x897dee8_0, L_0x897e208, C4<1>, C4<1>;
+L_0x897da68 .functor OR 1, L_0x897e2e8, L_0x897d9e0, C4<0>, C4<0>;
+v0x8963118_0 .alias "A", 0 0, v0x897d990_0;
+v0x8962030_0 .alias "B", 0 0, v0x897da18_0;
+v0x8962090_0 .net *"_s0", 0 0, L_0x897e2b0; 1 drivers
+v0x89620f0_0 .net *"_s2", 0 0, L_0x897e2e8; 1 drivers
+v0x8962158_0 .net *"_s4", 0 0, L_0x897d9e0; 1 drivers
+v0x89621b8_0 .alias "out", 0 0, v0x897de10_0;
+v0x8962238_0 .alias "sel", 0 0, v0x897dba0_0;
+    .scope S_0x8940810;
+T_0 ;
+    %set/v v0x897dbf0_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0x8940810;
+T_1 ;
+    %set/v v0x897dc78_0, 1, 1;
+    %end;
+    .thread T_1;
+    .scope S_0x8940810;
+T_2 ;
+    %set/v v0x897dd00_0, 0, 1;
+    %end;
+    .thread T_2;
+    .scope S_0x8940810;
+T_3 ;
+    %set/v v0x897dd88_0, 1, 1;
+    %end;
+    .thread T_3;
+    .scope S_0x8940810;
+T_4 ;
+    %vpi_call 2 10 "$dumpfile", "mux_4_1B_test.vcd";
+    %vpi_call 2 11 "$dumpvars", 1'sb0, S_0x8940810;
+    %vpi_call 2 12 "$monitor", "sel1 %b sel0 %b out %b", v0x897dee8_0, v0x897de98_0, v0x897de10_0;
+    %delay 0, 0;
+    %set/v v0x897de98_0, 0, 1;
+    %delay 0, 0;
+    %set/v v0x897dee8_0, 0, 1;
+    %delay 500, 0;
+    %set/v v0x897de98_0, 1, 1;
+    %delay 0, 0;
+    %set/v v0x897dee8_0, 0, 1;
+    %delay 500, 0;
+    %set/v v0x897de98_0, 0, 1;
+    %delay 0, 0;
+    %set/v v0x897dee8_0, 1, 1;
+    %delay 500, 0;
+    %set/v v0x897de98_0, 1, 1;
+    %delay 0, 0;
+    %set/v v0x897dee8_0, 1, 1;
+    %delay 500, 0;
+    %vpi_call 2 26 "$finish";
+    %end;
+    .thread T_4;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "4_1B_mux_test.v";
+    "4_1_muxB.v";
+    "2_1_mux.v";

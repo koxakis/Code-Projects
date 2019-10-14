@@ -1,0 +1,71 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 11;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x916cc98 .scope module, "test_8_16" "test_8_16" 2 2;
+ .timescale -9 -11;
+v0x916a850_0 .var "clk", 0 0;
+v0x916a8c0_0 .var "sign_in", 0 0;
+v0x916a910_0 .net "sign_out", 15 0, L_0x916ad70; 1 drivers
+v0x916a980_0 .var "unsigned_in", 7 0;
+S_0x916cd18 .scope module, "c1" "converter_8_16" 2 23, 3 1, S_0x916cc98;
+ .timescale 0 0;
+L_0x916abb8 .functor NOT 16, L_0x916ab30, C4<0000000000000000>, C4<0000000000000000>, C4<0000000000000000>;
+v0x9149620_0 .net *"_s0", 15 0, C4<0000000000000000>; 1 drivers
+v0x916a500_0 .net *"_s10", 15 0, L_0x916ac68; 1 drivers
+v0x916a560_0 .net *"_s2", 23 0, L_0x916aa50; 1 drivers
+v0x916a5c0_0 .net *"_s6", 15 0, L_0x916abb8; 1 drivers
+v0x916a628_0 .net *"_s8", 15 0, C4<0000000000000001>; 1 drivers
+v0x916a688_0 .net "sign_in", 0 0, v0x916a8c0_0; 1 drivers
+v0x916a708_0 .alias "sign_out", 15 0, v0x916a910_0;
+v0x916a768_0 .net "unsigned_in", 7 0, v0x916a980_0; 1 drivers
+v0x916a7f0_0 .net "unsigned_tmp", 15 0, L_0x916ab30; 1 drivers
+L_0x916aa50 .concat [ 8 16 0 0], v0x916a980_0, C4<0000000000000000>;
+L_0x916ab30 .part L_0x916aa50, 0, 16;
+L_0x916ac68 .arith/sum 16, L_0x916abb8, C4<0000000000000001>;
+L_0x916ad70 .functor MUXZ 16, L_0x916ab30, L_0x916ac68, v0x916a8c0_0, C4<>;
+    .scope S_0x916cc98;
+T_0 ;
+    %set/v v0x916a8c0_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0x916cc98;
+T_1 ;
+    %movi 8, 7, 8;
+    %set/v v0x916a980_0, 8, 8;
+    %end;
+    .thread T_1;
+    .scope S_0x916cc98;
+T_2 ;
+    %set/v v0x916a850_0, 0, 1;
+    %end;
+    .thread T_2;
+    .scope S_0x916cc98;
+T_3 ;
+    %delay 100, 0;
+    %load/v 8, v0x916a850_0, 1;
+    %inv 8, 1;
+    %set/v v0x916a850_0, 8, 1;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_0x916cc98;
+T_4 ;
+    %vpi_call 2 12 "$dumpfile", "8_16_test.vcd";
+    %vpi_call 2 13 "$dumpvars", 1'sb0, S_0x916cc98;
+    %vpi_call 2 14 "$monitor", "At sign_in %b, value = %b", v0x916a8c0_0, v0x916a910_0;
+    %delay 500, 0;
+    %set/v v0x916a8c0_0, 1, 1;
+    %delay 500, 0;
+    %set/v v0x916a8c0_0, 0, 1;
+    %delay 50000, 0;
+    %vpi_call 2 19 "$finish";
+    %end;
+    .thread T_4;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "8_16_test.v";
+    "8_16_converter.v";

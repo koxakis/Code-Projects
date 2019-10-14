@@ -1,0 +1,37 @@
+$date
+	Sun Nov 30 18:59:53 2014
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module mux_2_1_test $end
+$var wire 1 ! out $end
+$var reg 1 " A $end
+$var reg 1 # B $end
+$var reg 1 $ sel $end
+$scope module m1 $end
+$var wire 1 % A $end
+$var wire 1 & B $end
+$var wire 1 ! out $end
+$var wire 1 ' sel $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0'
+0&
+1%
+0$
+0#
+1"
+1!
+$end
+#1000
+0!
+1$
+1'
+#1500

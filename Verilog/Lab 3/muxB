@@ -1,0 +1,101 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 11;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8d3b0f8 .scope module, "mux_4_1_test" "mux_4_1_test" 2 2;
+ .timescale -9 -11;
+v0x8d782b0_0 .var "in", 3 0;
+v0x8d78320_0 .net "out", 0 0, L_0x8d78150; 1 drivers
+v0x8d783a8_0 .var "sel0", 0 0;
+v0x8d783f8_0 .var "sel1", 0 0;
+S_0x8d3acf0 .scope module, "m1" "muxB_4_1" 2 30, 3 1, S_0x8d3b0f8;
+ .timescale 0 0;
+v0x8d78028_0 .net "in", 3 0, v0x8d782b0_0; 1 drivers
+v0x8d78078_0 .net "mux0", 0 0, L_0x8d785d0; 1 drivers
+v0x8d78100_0 .net "mux1", 0 0, L_0x8d788b8; 1 drivers
+v0x8d78188_0 .alias "out", 0 0, v0x8d78320_0;
+v0x8d781d8_0 .net "sel0", 0 0, v0x8d783a8_0; 1 drivers
+v0x8d78260_0 .net "sel1", 0 0, v0x8d783f8_0; 1 drivers
+L_0x8d78690 .part v0x8d782b0_0, 3, 1;
+L_0x8d78750 .part v0x8d782b0_0, 2, 1;
+L_0x8d78978 .part v0x8d782b0_0, 1, 1;
+L_0x8d78a68 .part v0x8d782b0_0, 0, 1;
+S_0x8d77d08 .scope module, "m0" "mux_2_1" 3 10, 4 1, S_0x8d3acf0;
+ .timescale 0 0;
+L_0x8d78480 .functor NOT 1, v0x8d783a8_0, C4<0>, C4<0>, C4<0>;
+L_0x8d78228 .functor AND 1, L_0x8d78480, L_0x8d78690, C4<1>, C4<1>;
+L_0x8d78558 .functor AND 1, v0x8d783a8_0, L_0x8d78750, C4<1>, C4<1>;
+L_0x8d785d0 .functor OR 1, L_0x8d78228, L_0x8d78558, C4<0>, C4<0>;
+v0x8d77d88_0 .net "A", 0 0, L_0x8d78690; 1 drivers
+v0x8d77dd8_0 .net "B", 0 0, L_0x8d78750; 1 drivers
+v0x8d77e28_0 .net *"_s0", 0 0, L_0x8d78480; 1 drivers
+v0x8d77e78_0 .net *"_s2", 0 0, L_0x8d78228; 1 drivers
+v0x8d77ec8_0 .net *"_s4", 0 0, L_0x8d78558; 1 drivers
+v0x8d77f28_0 .alias "out", 0 0, v0x8d78078_0;
+v0x8d77fb8_0 .alias "sel", 0 0, v0x8d781d8_0;
+S_0x8d5cfe0 .scope module, "m1" "mux_2_1" 3 12, 4 1, S_0x8d3acf0;
+ .timescale 0 0;
+L_0x8d787d8 .functor NOT 1, v0x8d783a8_0, C4<0>, C4<0>, C4<0>;
+L_0x8d78810 .functor AND 1, L_0x8d787d8, L_0x8d78978, C4<1>, C4<1>;
+L_0x8d78880 .functor AND 1, v0x8d783a8_0, L_0x8d78a68, C4<1>, C4<1>;
+L_0x8d788b8 .functor OR 1, L_0x8d78810, L_0x8d78880, C4<0>, C4<0>;
+v0x8d5d060_0 .net "A", 0 0, L_0x8d78978; 1 drivers
+v0x8d5d0d0_0 .net "B", 0 0, L_0x8d78a68; 1 drivers
+v0x8d5d130_0 .net *"_s0", 0 0, L_0x8d787d8; 1 drivers
+v0x8d5d190_0 .net *"_s2", 0 0, L_0x8d78810; 1 drivers
+v0x8d5d1e0_0 .net *"_s4", 0 0, L_0x8d78880; 1 drivers
+v0x8d5d240_0 .alias "out", 0 0, v0x8d78100_0;
+v0x8d5d2d0_0 .alias "sel", 0 0, v0x8d781d8_0;
+S_0x8d3b670 .scope module, "m2" "mux_2_1" 3 14, 4 1, S_0x8d3acf0;
+ .timescale 0 0;
+L_0x8d78ad0 .functor NOT 1, v0x8d783f8_0, C4<0>, C4<0>, C4<0>;
+L_0x8d78b08 .functor AND 1, L_0x8d78ad0, L_0x8d785d0, C4<1>, C4<1>;
+L_0x8d780c8 .functor AND 1, v0x8d783f8_0, L_0x8d788b8, C4<1>, C4<1>;
+L_0x8d78150 .functor OR 1, L_0x8d78b08, L_0x8d780c8, C4<0>, C4<0>;
+v0x8d3b928_0 .alias "A", 0 0, v0x8d78078_0;
+v0x8d5cd78_0 .alias "B", 0 0, v0x8d78100_0;
+v0x8d5cdd8_0 .net *"_s0", 0 0, L_0x8d78ad0; 1 drivers
+v0x8d5ce38_0 .net *"_s2", 0 0, L_0x8d78b08; 1 drivers
+v0x8d5cea0_0 .net *"_s4", 0 0, L_0x8d780c8; 1 drivers
+v0x8d5cf00_0 .alias "out", 0 0, v0x8d78320_0;
+v0x8d5cf80_0 .alias "sel", 0 0, v0x8d78260_0;
+    .scope S_0x8d3b0f8;
+T_0 ;
+    %movi 8, 5, 4;
+    %set/v v0x8d782b0_0, 8, 4;
+    %end;
+    .thread T_0;
+    .scope S_0x8d3b0f8;
+T_1 ;
+    %vpi_call 2 10 "$dumpfile", "mux_4_1_test.vcd";
+    %vpi_call 2 11 "$dumpvars", 1'sb0, S_0x8d3b0f8;
+    %vpi_call 2 12 "$monitor", "sel1 %b sel0 %b out %b", v0x8d783f8_0, v0x8d783a8_0, v0x8d78320_0;
+    %delay 500, 0;
+    %set/v v0x8d783a8_0, 0, 1;
+    %delay 0, 0;
+    %set/v v0x8d783f8_0, 0, 1;
+    %delay 500, 0;
+    %set/v v0x8d783a8_0, 1, 1;
+    %delay 0, 0;
+    %set/v v0x8d783f8_0, 0, 1;
+    %delay 500, 0;
+    %set/v v0x8d783a8_0, 0, 1;
+    %delay 0, 0;
+    %set/v v0x8d783f8_0, 1, 1;
+    %delay 500, 0;
+    %set/v v0x8d783a8_0, 1, 1;
+    %delay 0, 0;
+    %set/v v0x8d783f8_0, 1, 1;
+    %delay 500, 0;
+    %vpi_call 2 26 "$finish";
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "4_1_mux_test.v";
+    "4_1_muxB.v";
+    "2_1_mux.v";

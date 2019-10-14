@@ -1,0 +1,69 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8907868 .scope module, "mux_4_1" "mux_4_1" 2 1;
+ .timescale 0 0;
+L_0x8927cd0 .functor NOT 1, L_0x8941208, C4<0>, C4<0>, C4<0>;
+L_0x8941358 .functor NOT 1, L_0x89412d0, C4<0>, C4<0>, C4<0>;
+L_0x89413c8 .functor AND 1, L_0x8927cd0, L_0x8941358, C4<1>, C4<1>;
+L_0x89414c0 .functor AND 1, L_0x89413c8, L_0x8941470, C4<1>, C4<1>;
+L_0x89415f0 .functor NOT 1, L_0x8941588, C4<0>, C4<0>, C4<0>;
+L_0x8941320 .functor AND 1, L_0x89415f0, L_0x8941660, C4<1>, C4<1>;
+L_0x8941830 .functor AND 1, L_0x8941320, L_0x89417a8, C4<1>, C4<1>;
+L_0x89418f8 .functor OR 1, L_0x89414c0, L_0x8941830, C4<0>, C4<0>;
+L_0x8941a68 .functor NOT 1, L_0x89419f0, C4<0>, C4<0>, C4<0>;
+L_0x8941ad8 .functor AND 1, L_0x89419a0, L_0x8941a68, C4<1>, C4<1>;
+L_0x8941bd0 .functor AND 1, L_0x8941ad8, L_0x8941b80, C4<1>, C4<1>;
+L_0x8941c78 .functor OR 1, L_0x89418f8, L_0x8941bd0, C4<0>, C4<0>;
+L_0x89416b0 .functor AND 1, L_0x8941d58, L_0x8941da8, C4<1>, C4<1>;
+L_0x8941fe8 .functor AND 1, L_0x89416b0, L_0x8941f30, C4<1>, C4<1>;
+L_0x8941d20 .functor OR 1, L_0x8941c78, L_0x8941fe8, C4<0>, C4<0>;
+v0x89078e8_0 .net *"_s1", 0 0, L_0x8941208; 1 drivers
+v0x8927840_0 .net *"_s11", 0 0, L_0x8941470; 1 drivers
+v0x89278a0_0 .net *"_s12", 0 0, L_0x89414c0; 1 drivers
+v0x8927900_0 .net *"_s15", 0 0, L_0x8941588; 1 drivers
+v0x8927968_0 .net *"_s16", 0 0, L_0x89415f0; 1 drivers
+v0x89279c8_0 .net *"_s19", 0 0, L_0x8941660; 1 drivers
+v0x8927a48_0 .net *"_s2", 0 0, L_0x8927cd0; 1 drivers
+v0x8927aa8_0 .net *"_s20", 0 0, L_0x8941320; 1 drivers
+v0x8927b30_0 .net *"_s23", 0 0, L_0x89417a8; 1 drivers
+v0x8927b90_0 .net *"_s24", 0 0, L_0x8941830; 1 drivers
+v0x8927c20_0 .net *"_s26", 0 0, L_0x89418f8; 1 drivers
+v0x8927c80_0 .net *"_s29", 0 0, L_0x89419a0; 1 drivers
+v0x8927d18_0 .net *"_s31", 0 0, L_0x89419f0; 1 drivers
+v0x8927d78_0 .net *"_s32", 0 0, L_0x8941a68; 1 drivers
+v0x8927e18_0 .net *"_s34", 0 0, L_0x8941ad8; 1 drivers
+v0x8927e78_0 .net *"_s37", 0 0, L_0x8941b80; 1 drivers
+v0x8927f20_0 .net *"_s38", 0 0, L_0x8941bd0; 1 drivers
+v0x8927f80_0 .net *"_s40", 0 0, L_0x8941c78; 1 drivers
+v0x8928020_0 .net *"_s43", 0 0, L_0x8941d58; 1 drivers
+v0x8928080_0 .net *"_s45", 0 0, L_0x8941da8; 1 drivers
+v0x8927fd0_0 .net *"_s46", 0 0, L_0x89416b0; 1 drivers
+v0x8928128_0 .net *"_s49", 0 0, L_0x8941f30; 1 drivers
+v0x89280d0_0 .net *"_s5", 0 0, L_0x89412d0; 1 drivers
+v0x89281e8_0 .net *"_s50", 0 0, L_0x8941fe8; 1 drivers
+v0x8928188_0 .net *"_s6", 0 0, L_0x8941358; 1 drivers
+v0x89282b0_0 .net *"_s8", 0 0, L_0x89413c8; 1 drivers
+v0x8928310_0 .net "in", 3 0, C4<zzzz>; 0 drivers
+v0x8928248_0 .net "out", 0 0, L_0x8941d20; 1 drivers
+v0x89411a8_0 .net "sel", 1 0, C4<zz>; 0 drivers
+L_0x8941208 .part C4<zz>, 1, 1;
+L_0x89412d0 .part C4<zz>, 0, 1;
+L_0x8941470 .part C4<zzzz>, 0, 1;
+L_0x8941588 .part C4<zz>, 1, 1;
+L_0x8941660 .part C4<zz>, 0, 1;
+L_0x89417a8 .part C4<zzzz>, 1, 1;
+L_0x89419a0 .part C4<zz>, 1, 1;
+L_0x89419f0 .part C4<zz>, 0, 1;
+L_0x8941b80 .part C4<zzzz>, 2, 1;
+L_0x8941d58 .part C4<zz>, 1, 1;
+L_0x8941da8 .part C4<zz>, 0, 1;
+L_0x8941f30 .part C4<zzzz>, 3, 1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "4_1_mux.v";

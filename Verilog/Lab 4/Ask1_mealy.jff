@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Created with JFLAP 6.4.--><structure>
+	<type>mealy</type>
+	<automaton>
+		<!--The list of states.-->
+		<state id="0" name="0₵">
+			<x>273.0</x>
+			<y>218.0</y>
+			<initial/>
+		</state>
+		<state id="1" name="5₵">
+			<x>446.0</x>
+			<y>229.0</y>
+		</state>
+		<state id="2" name="10₵">
+			<x>653.0</x>
+			<y>229.0</y>
+		</state>
+		<state id="3" name="15₵">
+			<x>851.0</x>
+			<y>211.0</y>
+		</state>
+		<!--The list of transitions.-->
+		<transition>
+			<from>1</from>
+			<to>3</to>
+			<controlx>622</controlx>
+			<controly>115</controly>
+			<read>in10</read>
+			<transout>0</transout>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>2</to>
+			<controlx>446</controlx>
+			<controly>104</controly>
+			<read>in10</read>
+			<transout>0</transout>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>2</to>
+			<read>in5</read>
+			<transout>0</transout>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>0</to>
+			<controlx>477</controlx>
+			<controly>300</controly>
+			<read>in10</read>
+			<transout>1</transout>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>0</to>
+			<controlx>413</controlx>
+			<controly>417</controly>
+			<read>in5 || in10</read>
+			<transout>1</transout>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>3</to>
+			<read>in5</read>
+			<transout>0</transout>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>3</to>
+			<read>in5' in10'</read>
+			<transout>0</transout>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>2</to>
+			<read>in5' in10'</read>
+			<transout>0</transout>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>1</to>
+			<read>in5' in10'</read>
+			<transout>0</transout>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>1</to>
+			<read>in5</read>
+			<transout>0</transout>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>0</to>
+			<read>in5' in10'</read>
+			<transout>0</transout>
+		</transition>
+	</automaton>
+</structure>
